@@ -92,15 +92,17 @@ class _MyAppState extends State<MyApp> {
           title: Text('ELEVATE-UP'),
           backgroundColor: Color(0xFF00E676),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: _questionIndex < _questions.length
-              ? Quiz(
-                  answerQuestion: _answerQuestion,
-                  questionIndex: _questionIndex,
-                  questions: _questions,
-                ) //Quiz
-              : Result(_totalScore, _resetQuiz),
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(30.0),
+            child: _questionIndex < _questions.length
+                ? Quiz(
+                    answerQuestion: _answerQuestion,
+                    questionIndex: _questionIndex,
+                    questions: _questions,
+                  ) //Quiz
+                : Result(_totalScore, _resetQuiz),
+          ),
         ), //Padding
       ), //Scaffold
       debugShowCheckedModeBanner: false,

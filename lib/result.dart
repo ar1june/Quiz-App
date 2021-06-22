@@ -7,19 +7,24 @@ class Result extends StatelessWidget {
   Result(this.resultScore, this.resetHandler);
 
   String get resultPhrase {
-    String resultText;
+    String resultText = '';
     if (resultScore >= 41) {
-      resultText = 'You are awesome!';
+      resultText = resultText + 'You are awesome!';
+
       print(resultScore);
-    } else if (resultScore >= 31) {
-      resultText = 'Pretty likeable!';
+    }
+    if (resultScore >= 31) {
+      resultText = resultText + 'Pretty likeable!';
+
       print(resultScore);
-    } else if (resultScore >= 21) {
-      resultText = 'You need to work more!';
-    } else if (resultScore >= 1) {
-      resultText = 'You need to work hard!';
+    }
+    if (resultScore >= 21) {
+      resultText = resultText + 'You need to work more!';
+    }
+    if (resultScore >= 1) {
+      resultText = resultText + 'You need to work hard!';
     } else {
-      resultText = 'This is a poor score!';
+      resultText = resultText + 'This is a poor score!';
       print(resultScore);
     }
     return resultText;
@@ -31,11 +36,12 @@ class Result extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text(
-            resultPhrase,
-            style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
-            textAlign: TextAlign.center,
-          ), //Text
+          if (resultScore >= 1)
+            Text(
+              resultPhrase,
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            ), //Text
           Text(
             'Score ' '$resultScore',
             style: TextStyle(fontSize: 36, fontWeight: FontWeight.bold),
